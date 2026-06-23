@@ -112,7 +112,6 @@ MailFlow busca transformar la experiencia del correo electrónico permitiendo a 
 
 ### Fase 1
 
-* [ ] Configuración del proyecto Flutter
 * [ ] Integración de conversión de texto a voz
 * [ ] Lectura en voz alta de un correo electrónico de ejemplo
 
@@ -143,3 +142,22 @@ MailFlow busca transformar la experiencia del correo electrónico permitiendo a 
 ## Estado
 
 🚧 En desarrollo
+
+### Estructura
+
+````
+mailflow/
+│
+├── frontend/
+│
+├── backend/
+│
+├── docs/
+    ├── architecture.md
+    ├── roadmap.md
+    └── ideas.md
+│
+├── .gitignore
+│
+└── README.md
+````
