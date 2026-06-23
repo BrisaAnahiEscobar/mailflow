@@ -16,13 +16,37 @@ class MailFlowApp extends StatelessWidget {
       theme: ThemeData(
         useMaterial3: true,
       ),
-      home: const HomePage(),
+      home: HomePage(),
     );
   }
 }
 
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+  HomePage({super.key});
+
+  final FlutterTts tts = FlutterTts();
+
+Future<void> leerCorreo() async {
+ /*await tts.setLanguage("es-ES");
+  await tts.setSpeechRate(0.45);
+  await tts.setPitch(1.0);
+  await tts.setVolume(1.0);
+*/
+  await tts.speak(
+    "Hola Brisa. Tienes un correo nuevo."
+  );
+}
+  print("Botón presionado");
+
+  var resultadoIdioma = await tts.setLanguage("es-ES");
+  print("Idioma: $resultadoIdioma");
+
+  var resultado = await tts.speak(
+    "Hola Brisa. Tienes un correo nuevo.",
+  );
+
+  print("Speak: $resultado");
+}
 
   @override
   Widget build(BuildContext context) {
@@ -32,9 +56,7 @@ class HomePage extends StatelessWidget {
       ),
       body: Center(
         child: ElevatedButton(
-          onPressed: () {
-            print("Leer correo");
-          },
+          onPressed: leerCorreo,
           child: const Text("Leer correo"),
         ),
       ),
