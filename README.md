@@ -139,11 +139,7 @@ MailFlow busca transformar la experiencia del correo electrónico permitiendo a 
 * [ ] Compatibilidad con múltiples proveedores
 * [ ] Implementación en producción
 
-## Estado
-
-🚧 En desarrollo
-
-### Estructura
+### Estructura inicial
 
 ````
 mailflow/
@@ -161,3 +157,5 @@ mailflow/
 │
 └── README.md
 ````
+## Autor 
+Brisa Escobar
