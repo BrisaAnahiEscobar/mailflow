@@ -70,14 +70,14 @@ MailFlow busca transformar la experiencia del correo electrónico permitiendo a 
 
 ## Estado
 
-🚧 En desarrollo# MailFlow
+🚧 En desarrollo
 
+# MailFlow
 MailFlow es un asistente de voz multiplataforma para correo electrónico que permite a los usuarios leer sus mensajes sin usar las manos.
 
 La aplicación se conecta a proveedores de correo electrónico como Gmail, recupera los mensajes entrantes y los convierte a voz natural mediante tecnologías de conversión de texto a voz. Las futuras versiones incorporarán resúmenes con IA, priorización de correos electrónicos y respuestas por voz.
 
 ## Problema
-
 Leer correos electrónicos puede ser tedioso, especialmente durante los desplazamientos, al realizar varias tareas a la vez o para usuarios con necesidades de accesibilidad.
 
 MailFlow busca transformar la experiencia del correo electrónico permitiendo a los usuarios escuchar sus mensajes en lugar de leerlos.
