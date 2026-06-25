@@ -1,145 +1,67 @@
-# MailFlow
-
+# MailFlow 📨 
 MailFlow es un asistente de voz multiplataforma para correo electrónico que permite a los usuarios leer sus mensajes sin usar las manos.
 
 La aplicación se conecta a proveedores de correo electrónico como Gmail, recupera los mensajes entrantes y los convierte a voz natural mediante tecnologías de conversión de texto a voz. Las futuras versiones incorporarán resúmenes con IA, priorización de correos electrónicos y respuestas por voz.
 
-## Problema
+## 🧩 Problema
 
 Leer correos electrónicos puede ser tedioso, especialmente durante los desplazamientos, al realizar varias tareas a la vez o para usuarios con necesidades de accesibilidad.
 
 MailFlow busca transformar la experiencia del correo electrónico permitiendo a los usuarios escuchar sus mensajes en lugar de leerlos.
-
-## Tecnologías utilizadas
-
-### Frontend
-
-* Flutter
-* Dart
-
-### Backend
-
-* Java
-* Spring Boot
-
-### Servicios
-
-* API de Gmail
-* Autenticación OAuth2
-* Conversión de texto a voz (TTS)
-
-### Base de datos
-
-* PostgreSQL
-
-### DevOps
-
-* Docker
-
-## Hoja de ruta
-
-### Fase 1
-
-* [ ] Configuración del proyecto Flutter
-* [ ] Integración de conversión de texto a voz
-* [ ] Lectura en voz alta de un correo electrónico de ejemplo
-
-### Fase 2
-
-* [ ] Integración de Gmail OAuth
-* [ ] Recuperación de metadatos de correo electrónico
-* [ ] Lectura en voz alta de correos electrónicos reales
-
-### Fase 3
-
-* [ ] Backend Spring Boot
-* [ ] Preferencias del usuario
-* [ ] Historial de correo electrónico
-
-### Fase 4
-
-* [ ] Resúmenes con IA
-* [ ] Inteligente Priorización
-* [ ] Categorización de correo electrónico
-
-### Fase 5
-
-* [ ] Respuestas de voz
-* [ ] Compatibilidad con múltiples proveedores
-* [ ] Implementación en producción
 
 ## Estado
 
 🚧 En desarrollo
 
-# MailFlow
-MailFlow es un asistente de voz multiplataforma para correo electrónico que permite a los usuarios leer sus mensajes sin usar las manos.
+## 🛠️ Tecnologías Utilizadas
 
-La aplicación se conecta a proveedores de correo electrónico como Gmail, recupera los mensajes entrantes y los convierte a voz natural mediante tecnologías de conversión de texto a voz. Las futuras versiones incorporarán resúmenes con IA, priorización de correos electrónicos y respuestas por voz.
+| **FRONTEND** | **BACKEND** | **SERVICIOS** | **BASE DE DATOS** | **DEVOPS** |
+|:---:|:---:|:---:|:---:|:---:|
+| Flutter | Java | API de Gmail | PostgreSQL | Docker |
+| Dart | Spring Boot | Autenticación OAuth2 | | |
+| | | Conversión TTS | | |
 
-## Problema
-Leer correos electrónicos puede ser tedioso, especialmente durante los desplazamientos, al realizar varias tareas a la vez o para usuarios con necesidades de accesibilidad.
 
-MailFlow busca transformar la experiencia del correo electrónico permitiendo a los usuarios escuchar sus mensajes en lugar de leerlos.
+## 🗺️ Hoja de Ruta
 
-## Tecnologías utilizadas
+<details>
+<summary>📋 Ver tareas detalladas por fase</summary>
 
-### Frontend
+**🔊 Fase 1 — Fundamentos de Voz**
+- [ ] Integración de conversión de texto a voz
+- [ ] Lectura en voz alta de un correo de ejemplo
 
-* Flutter
-* Dart
+**📧 Fase 2 — Integración Gmail**
+- [ ] Gmail OAuth
+- [ ] Recuperación de metadatos
+- [ ] Lectura de correos reales
 
-### Backend
+**⚙️ Fase 3 — Backend & Usuario**
+- [ ] Spring Boot
+- [ ] Preferencias del usuario
+- [ ] Historial de correo
 
-* Java
-* Spring Boot
+**🤖 Fase 4 — Inteligencia Artificial**
+- [ ] Resúmenes con IA
+- [ ] Priorización inteligente
+- [ ] Categorización
 
-### Servicios
+**🚀 Fase 5 — Producción**
+- [ ] Respuestas de voz
+- [ ] [ ] Multi-proveedor
+- [ ] [ ] Deploy en producción
 
-* API de Gmail
-* Autenticación OAuth2
-* Conversión de texto a voz (TTS)
+</details>
 
-### Base de datos
+| | Fase | Descripción | Estado |
+|:---:|:---|:---|:---:|
+| 🔊 | **Fase 1** · Fundamentos de Voz | Integración TTS · Lectura de correo de ejemplo | ![](https://img.shields.io/badge/Pendiente-lightgrey?style=flat-square) |
+| 📧 | **Fase 2** · Integración Gmail | OAuth · Metadatos · Lectura de correos reales | ![](https://img.shields.io/badge/Pendiente-lightgrey?style=flat-square) |
+| ⚙️ | **Fase 3** · Backend & Usuario | Spring Boot · Preferencias · Historial | ![](https://img.shields.io/badge/Pendiente-lightgrey?style=flat-square) |
+| 🤖 | **Fase 4** · Inteligencia Artificial | Resúmenes IA · Priorización · Categorización | ![](https://img.shields.io/badge/Pendiente-lightgrey?style=flat-square) |
+| 🚀 | **Fase 5** · Producción | Respuestas de voz · Multi-proveedor · Deploy | ![](https://img.shields.io/badge/Pendiente-lightgrey?style=flat-square) |
 
-* PostgreSQL
-
-### DevOps
-
-* Docker
-
-## Hoja de ruta
-
-### Fase 1
-
-* [ ] Integración de conversión de texto a voz
-* [ ] Lectura en voz alta de un correo electrónico de ejemplo
-
-### Fase 2
-
-* [ ] Integración de Gmail OAuth
-* [ ] Recuperación de metadatos de correo electrónico
-* [ ] Lectura en voz alta de correos electrónicos reales
-
-### Fase 3
-
-* [ ] Backend Spring Boot
-* [ ] Preferencias del usuario
-* [ ] Historial de correo electrónico
-
-### Fase 4
-
-* [ ] Resúmenes con IA
-* [ ] Inteligente Priorización
-* [ ] Categorización de correo electrónico
-
-### Fase 5
-
-* [ ] Respuestas de voz
-* [ ] Compatibilidad con múltiples proveedores
-* [ ] Implementación en producción
-
-### Estructura inicial
+### 🗂️ Estructura inicial 
 
 ````
 mailflow/
@@ -157,5 +79,7 @@ mailflow/
 │
 └── README.md
 ````
-## Autor 
+## Autor 👩🏽‍💻
 Brisa Escobar
+<!-- y corchi <3-->
+
