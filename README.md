@@ -48,8 +48,8 @@ MailFlow busca transformar la experiencia del correo electrónico permitiendo a 
 
 **🚀 Fase 5 — Producción**
 - [ ] Respuestas de voz
-- [ ] [ ] Multi-proveedor
-- [ ] [ ] Deploy en producción
+- [ ] Multi-proveedor
+- [ ] Deploy en producción
 
 </details>
 
