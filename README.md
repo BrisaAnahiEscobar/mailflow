@@ -55,11 +55,11 @@ MailFlow busca transformar la experiencia del correo electrónico permitiendo a 
 
 | | Fase | Descripción | Estado |
 |:---:|:---|:---|:---:|
-| 🔊 | **Fase 1** · Fundamentos de Voz | Integración TTS · Lectura de correo de ejemplo | ![](https://img.shields.io/badge/Pendiente-lightgrey?style=flat-square) |
-| 📧 | **Fase 2** · Integración Gmail | OAuth · Metadatos · Lectura de correos reales | ![](https://img.shields.io/badge/Pendiente-lightgrey?style=flat-square) |
-| ⚙️ | **Fase 3** · Backend & Usuario | Spring Boot · Preferencias · Historial | ![](https://img.shields.io/badge/Pendiente-lightgrey?style=flat-square) |
-| 🤖 | **Fase 4** · Inteligencia Artificial | Resúmenes IA · Priorización · Categorización | ![](https://img.shields.io/badge/Pendiente-lightgrey?style=flat-square) |
-| 🚀 | **Fase 5** · Producción | Respuestas de voz · Multi-proveedor · Deploy | ![](https://img.shields.io/badge/Pendiente-lightgrey?style=flat-square) |
+| 🔊 | **Fase 1** · Fundamentos de Voz | Integración TTS · Lectura de correo de ejemplo | ![](https://img.shields.io/badge/Completado-brightgreen?style=flat-square) |
+| 📧 | **Fase 2** · Integración Gmail | OAuth · Metadatos · Lectura de correos reales |![](https://img.shields.io/badge/En_progreso-blue?style=flat-square)|
+| ⚙️ | **Fase 3** · Backend & Usuario | Spring Boot · Preferencias · Historial | ![](https://img.shields.io/badge/Pendiente-FFD700?style=flat-square)|
+| 🤖 | **Fase 4** · Inteligencia Artificial | Resúmenes IA · Priorización · Categorización |![](https://img.shields.io/badge/Pendiente-FFD700?style=flat-square) |
+| 🚀 | **Fase 5** · Producción | Respuestas de voz · Multi-proveedor · Deploy | ![](https://img.shields.io/badge/Pendiente-FFD700?style=flat-square) |
 
 ### 🗂️ Estructura inicial 
 
