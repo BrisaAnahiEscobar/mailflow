@@ -1,8 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'providers/tts_provider.dart';
 import 'screens/home_page.dart';
 
-void main() {
-  runApp(const MailFlowApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  final ttsProvider = TtsProvider();
+  await ttsProvider.inicializar();
+
+  runApp(
+    ChangeNotifierProvider(
+      create: (_) => ttsProvider,
+      child: const MailFlowApp(),
+    ),
+  );
 }
 
 class MailFlowApp extends StatelessWidget {
@@ -13,9 +25,7 @@ class MailFlowApp extends StatelessWidget {
     return MaterialApp(
       title: 'MailFlow',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        useMaterial3: true,
-      ),
+      theme: ThemeData(useMaterial3: true, colorSchemeSeed: Colors.blue),
       home: HomePage(),
     );
   }
