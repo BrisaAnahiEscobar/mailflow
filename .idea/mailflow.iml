@@ -6,6 +6,12 @@
       <excludeFolder url="file://$MODULE_DIR$/frontend/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/frontend/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/frontend/build" />
+      <excludeFolder url="file://$MODULE_DIR$/frontend/windows/flutter/ephemeral/.plugin_symlinks/flutter_tts/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/frontend/windows/flutter/ephemeral/.plugin_symlinks/flutter_tts/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/frontend/windows/flutter/ephemeral/.plugin_symlinks/flutter_tts/build" />
+      <excludeFolder url="file://$MODULE_DIR$/frontend/windows/flutter/ephemeral/.plugin_symlinks/flutter_tts/example/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/frontend/windows/flutter/ephemeral/.plugin_symlinks/flutter_tts/example/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/frontend/windows/flutter/ephemeral/.plugin_symlinks/flutter_tts/example/build" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
