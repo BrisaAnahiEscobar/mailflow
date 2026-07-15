@@ -25,3 +25,7 @@ class Email {
         'Asunto: $asunto';
   }
 }
+
+//TODO - CASO BORDE
+/*Que devuelve texto para leer si asunto esta vacio ""
+El campo es required string no nullable*/
