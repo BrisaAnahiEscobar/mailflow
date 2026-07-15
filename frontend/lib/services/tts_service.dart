@@ -45,11 +45,12 @@ class TtsService {
     await _tts.speak(texto);
   }
 
+  /*
   Future<void> pausar() async {
     if (_estaHablando) {
       await _tts.pause();
     }
-  }
+  }*/
 
   // TODO: revisar el soporte en flutter
   /*Future<void> reanudar() async {
