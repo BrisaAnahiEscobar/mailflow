@@ -36,9 +36,8 @@ class TtsProvider extends ChangeNotifier {
       _mensajeError = 'No se pudo inicializar el lector de voz';
       debugPrint('TtsProvider error al inicializar: $e');
     }
+    notifyListeners();
   }
-
-  notifyListeners();
 
   /* --------------------------------------------
                     METODOS PUBLICOS
