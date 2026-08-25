@@ -40,13 +40,17 @@ class GmailService {
 
     for (final resumen in mensajes) {
       if (resumen.id == null) continue;
-      final detalle = await _api!.users.messages.get(
-        'me',
-        resumen.id!,
-        format: 'metadata',
-        metadataHeaders: ['From', 'Subject'],
-      );
-      correos.add(_mapearEmail(detalle));
+      try {
+        final detalle = await _api!.users.messages.get(
+          'me',
+          resumen.id!,
+          format: 'metadata',
+          metadataHeaders: ['From', 'Subject'],
+        );
+        correos.add(_mapearEmail(detalle));
+      } catch (e) {
+        print('No se pudo cargar el correo ${resumen.id}: $e');
+      }
     }
 
     return correos;
