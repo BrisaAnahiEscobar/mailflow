@@ -4,10 +4,10 @@ import 'package:googleapis/gmail/v1.dart' show DetailedApiRequestError;
 import '../models/email.dart';
 import '../services/gmail_service.dart';
 
-class Gmailprovider extends ChangeNotifier {
+class GmailProvider extends ChangeNotifier {
   final GmailService _servicio;
 
-  Gmailprovider(this._servicio);
+  GmailProvider(this._servicio);
 
   List<Email> _correos = [];
   bool _cargando = false;
