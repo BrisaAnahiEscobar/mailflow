@@ -4,9 +4,26 @@ import 'package:google_sign_in_web/web_only.dart' as google_sign_in_web;
 import 'package:provider/provider.dart';
 
 import '../providers/auth_provider.dart';
+import '../providers/gmail_provider.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
+
+  Future<void> _autorizarGmail(BuildContext context, AuthProvider auth) async {
+    await auth.autorizarGmail();
+
+    final accessToken = auth.accessToken;
+
+    if (accessToken == null || accessToken.isEmpty) {
+      return;
+    }
+
+    final gmailProvider = context.read<GmailProvider>();
+
+    gmailProvider.configurar(accessToken);
+
+    await gmailProvider.cargarBandeja();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -83,13 +100,13 @@ class LoginPage extends StatelessWidget {
                           auth.cargando ||
                           auth.tieneAccesoGmail)
                       ? null
-                      : () => auth.autorizarGmail(),
+                      : () => _autorizarGmail(context, auth),
                 ),
 
                 if (auth.cargando)
                   const Padding(
                     padding: EdgeInsets.only(top: 24),
-                    child: CircularProgressIndicator(),
+                    child: Center(child: CircularProgressIndicator()),
                   ),
 
                 if (auth.estaAutenticado && auth.tieneAccesoGmail)
