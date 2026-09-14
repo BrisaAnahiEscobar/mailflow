@@ -20,6 +20,7 @@ migrate_working_dir/
 
 # credenciales & ids
 .env
+.env.example
 
 # Flutter/Dart/Pub related
 **/doc/api/
