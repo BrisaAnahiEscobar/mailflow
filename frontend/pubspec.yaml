@@ -38,7 +38,7 @@ dependencies:
   googleapis: ^13.0.0
   googleapis_auth: ^1.6.0
   http: ^1.2.0
-  flutter_secure_storage: ^10.3.1
+  # flutter_secure_storage: ^10.3.1
   flutter_dotenv: ^5.1.0
 
 dev_dependencies:
