@@ -147,5 +147,9 @@ Flutter UI → Provider → Service → Repository
 
 *15/09/26 - Última actualización: Fase 2 — Integración Gmail (Completada)*
 
-#### Brisa Anahi Escobar - Estudiante de Ingenieria En Sistemas de Informacion
+### Autora 👩🏽‍💻
+
+#### Brisa Escobar - Estudiante de Ingeniería en Sistemas · Desarrolladora de Software.
+
+Proyecto personal orientado a accesibilidad, productividad y desarrollo multiplataforma.
 
