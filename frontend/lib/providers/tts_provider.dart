@@ -49,7 +49,7 @@ class TtsProvider extends ChangeNotifier {
       _estaHablando = true;
       _mensajeError = null;
       notifyListeners();
-      await _servicio.hablar(correo.textoParaLeer());
+      await _servicio.hablar(correo.textoParaLeer(), idioma: correo.idioma);
       _estaHablando = false;
     } catch (e) {
       _estaHablando = false;

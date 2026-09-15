@@ -37,27 +37,12 @@ class TtsService {
   /* --------------------------------------------
                     METODOS PUBLICOS
     -------------------------------------------- */
-  Future<void> hablar(String texto) async {
+  Future<void> hablar(String texto, {String idioma = 'es-ES'}) async {
     if (texto.trim().isEmpty) return;
-    if (_estaHablando) {
-      await parar();
-    }
+    if (_estaHablando) await parar();
+    await _tts.setLanguage(idioma);
     await _tts.speak(texto);
   }
-
-  /*
-  Future<void> pausar() async {
-    if (_estaHablando) {
-      await _tts.pause();
-    }
-  }*/
-
-  // TODO: revisar el soporte en flutter
-  /*Future<void> reanudar() async {
-    if (!_estaHablando) {
-      await _tts.continueUtterance(); // revisar
-    }
-  }*/
 
   Future<void> parar() async {
     await _tts.stop();
