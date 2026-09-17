@@ -1,179 +1,256 @@
-# MailFlow 📨
+# 🎙️ MailFlow
 
-## Intelligent Email Voice Assistant
+### ¿Y si pudieras escuchar tus emails en lugar de leerlos?
 
-MailFlow es un asistente de voz para correo electrónico que permite a los usuarios leer sus mensajes sin usar las manos.
+**MailFlow** es un asistente de correo electrónico web que transforma los emails en audio mediante **Text-to-Speech** y
+busca incorporar **resúmenes generados con inteligencia artificial** para facilitar el consumo de información cuando
+leer no resulta práctico.
 
-La aplicación se conecta a proveedores de correo electrónico como Gmail, recupera los mensajes entrantes y los convierte
-a voz natural mediante tecnologías de conversión de texto a voz. Las futuras versiones incorporarán resúmenes con IA,
-priorización de correos electrónicos y respuestas por voz.
+> 🚧 **Proyecto personal en desarrollo**
 
-## 🧩 Problema
+[![Flutter](https://img.shields.io/badge/Flutter-02569B?logo=flutter\&logoColor=white)](https://flutter.dev/)
+[![Dart](https://img.shields.io/badge/Dart-0175C2?logo=dart\&logoColor=white)](https://dart.dev/)
+[![Gmail API](https://img.shields.io/badge/Gmail%20API-EA4335?logo=gmail\&logoColor=white)](https://developers.google.com/gmail/api)
+[![OAuth 2.0](https://img.shields.io/badge/OAuth-2.0-blue)](https://oauth.net/2/)
+[![Spring Boot](https://img.shields.io/badge/Spring%20Boot-6DB33F?logo=springboot\&logoColor=white)](https://spring.io/projects/spring-boot)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-336791?logo=postgresql\&logoColor=white)](https://www.postgresql.org/)
+[![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker\&logoColor=white)](https://www.docker.com/)
 
-Leer correos electrónicos puede ser tedioso, especialmente durante los desplazamientos, al realizar varias tareas a la
-vez o para usuarios con necesidades de accesibilidad.
+---
 
-MailFlow busca transformar la experiencia del correo electrónico permitiendo a los usuarios escuchar sus mensajes en
-lugar de leerlos.
+## 💡 El problema
+
+MailFlow nació a partir de una situación real.
+
+Una persona cercana a mí recibe una gran cantidad de correos electrónicos durante su jornada laboral y no siempre
+dispone del tiempo necesario para leerlos todos.
+
+Una de sus necesidades era poder **escuchar los emails mientras se trasladaba**, sin depender de Siri.
+
+Esto llevó a una pregunta:
+
+> **¿Por qué un email tiene que ser necesariamente algo que leemos?**
+
+A partir de esa idea comenzó MailFlow.
+
+---
+
+## 🎯 Objetivo
+
+El objetivo de MailFlow es explorar una experiencia de correo electrónico más flexible, donde el usuario pueda:
+
+* 📧 consultar sus emails;
+* 🔊 escucharlos mediante Text-to-Speech;
+* 🤖 obtener resúmenes de mensajes extensos;
+* ⭐ identificar mensajes relevantes;
+* 🎙️ interactuar con el correo mediante voz.
+
+La aplicación está pensada especialmente para situaciones donde mantener la atención sobre una pantalla no resulta
+práctico.
+
+---
+
+## ✨ Funcionalidades
+
+### Actualmente implementado
+
+* 🔐 Autenticación mediante Google OAuth 2.0
+* 📧 Integración con Gmail API
+* 📬 Recuperación de correos electrónicos
+* 📨 Visualización de mensajes
+* 🔊 Conversión de texto a voz
+* 🌐 Interfaz web desarrollada con Flutter
+
+### En desarrollo
+
+* 🤖 Resúmenes de emails mediante IA
+* ⭐ Priorización inteligente
+* 🏷️ Categorización automática
+* 🎙️ Interacción mediante comandos de voz
+* 💬 Respuestas mediante voz
+* 📮 Soporte para otros proveedores de correo
+
+---
+
+## 🖥️ Flujo actual
+
+```text
+┌──────────────────┐
+│    Usuario       │
+└────────┬─────────┘
+         │
+         ▼
+┌──────────────────┐
+│   Google OAuth   │
+└────────┬─────────┘
+         │
+         ▼
+┌──────────────────┐
+│    Gmail API     │
+└────────┬─────────┘
+         │
+         ▼
+┌──────────────────┐
+│ Procesamiento    │
+│     Email        │
+└────────┬─────────┘
+         │
+         ▼
+┌──────────────────┐
+│  Text-to-Speech  │
+└──────────────────┘
+         │
+         ▼
+       🔊 Audio
+```
+
+---
 
 ## 🏗️ Arquitectura
 
-```text
-┌─────────────────┐
-│   Flutter App   │
-└────────┬────────┘
-         │
-         ▼
-┌─────────────────┐
-│ Google OAuth 2.0│
-└────────┬────────┘
-         │
-         ▼
-┌─────────────────┐
-│    Gmail API    │
-└────────┬────────┘
-         │
-         ▼
-┌─────────────────┐
-│ Email Processing│
-└────────┬────────┘
-         │
-         ▼
-┌─────────────────┐
-│ Text-to-Speech  │
-└─────────────────┘
-```
+### Arquitectura actual
 
-## 🚀 Arquitectura Futura
+La versión actual está centrada en Flutter y la integración directa con los servicios necesarios para obtener y
+reproducir los correos.
 
 ```text
-┌─────────────────┐
-│   Flutter App   │
-└────────┬────────┘
-         │
-         ▼
-┌─────────────────┐
-│ Spring Boot API │
-└─────┬─────┬─────┘
-      │     │
-      │     └──────────────┐
-      │                    │
-      ▼                    ▼
-┌──────────────┐   ┌────────────────┐
-│ PostgreSQL   │   │ AI Services    │
-└──────────────┘   └────────────────┘
-      ▲
-      │
-      ▼
-┌──────────────┐
-│ Gmail API    │
-└──────────────┘
+Flutter Web
+    │
+    ├── Google OAuth 2.0
+    │
+    ├── Gmail API
+    │
+    ├── Email Processing
+    │
+    └── Text-to-Speech
 ```
 
-## Estado
+### Arquitectura planificada
 
-🚧 En desarrollo
+A medida que el proyecto evolucione, la arquitectura contempla incorporar un backend para separar responsabilidades y
+centralizar la lógica de negocio.
 
-## 🛠️ Tecnologías Utilizadas
+```text
+                  ┌───────────────┐
+                  │ Flutter Web   │
+                  └───────┬───────┘
+                          │
+                          ▼
+                  ┌───────────────┐
+                  │ Spring Boot   │
+                  │     API       │
+                  └───────┬───────┘
+                          │
+                ┌─────────┴─────────┐
+                ▼                   ▼
+        ┌──────────────┐    ┌──────────────┐
+        │ PostgreSQL   │    │ AI Services  │
+        └──────────────┘    └──────────────┘
+                │
+                ▼
+          ┌──────────────┐
+          │  Gmail API   │
+          └──────────────┘
+```
 
-| **FRONTEND** | **BACKEND** |    **SERVICIOS**     | **BASE DE DATOS** | **DEVOPS** |
-|:------------:|:-----------:|:--------------------:|:-----------------:|:----------:|
-|   Flutter    |    Java     |     API de Gmail     |    PostgreSQL     |   Docker   |
-|     Dart     | Spring Boot | Autenticación OAuth2 |                   |            |
-|              |             |    Conversión TTS    |                   |            |
+---
 
-## 🗺️ Hoja de Ruta
+## 🛠️ Tecnologías
 
-<details>
-<summary>📋 Ver tareas detalladas por fase</summary>
+| Área           | Tecnologías          |
+|----------------|----------------------|
+| Frontend       | Flutter · Dart       |
+| Backend        | Java · Spring Boot   |
+| Email          | Gmail API            |
+| Authentication | Google OAuth 2.0     |
+| Voice          | Text-to-Speech       |
+| AI             | AI-powered summaries |
+| Database       | PostgreSQL           |
+| DevOps         | Docker               |
+| Documentation  | Markdown · ADRs      |
 
-**🔊 Fase 1 — Fundamentos de Voz**
+---
 
-- [x] Integración de conversión de texto a voz
-- [x] Lectura en voz alta de un correo de ejemplo
+## 🧠 Decisiones técnicas
 
-**📧 Fase 2 — Integración Gmail**
+MailFlow también funciona como un espacio de aprendizaje y experimentación sobre desarrollo de software.
 
-- [x] Gmail OAuth
-- [x] Recuperación de metadatos
-- [x] Lectura de correos reales
+Algunas decisiones se documentan mediante **Architecture Decision Records (ADR)** para registrar:
 
-**⚙️ Fase 3 — Backend & Usuario**
+* alternativas consideradas;
+* decisiones tomadas;
+* motivos técnicos;
+* consecuencias;
+* posibles cambios futuros.
 
-- [ ] Spring Boot
-- [ ] Preferencias del usuario
-- [ ] Historial de correo
+📚 La documentación técnica se encuentra en [`docs/`](docs/).
 
-**🤖 Fase 4 — Inteligencia Artificial**
+---
 
-- [ ] Resúmenes con IA
-- [ ] Priorización inteligente
-- [ ] Categorización
+## 🗺️ Roadmap
 
-**🚀 Fase 5 — Producción**
+### 🔊 Fase 1 — Voz
 
-- [ ] Respuestas de voz
-- [ ] Multi-proveedor
-- [ ] Deploy en producción
+* [x] Integración Text-to-Speech
+* [x] Reproducción de contenido
+* [ ] Mejoras de experiencia de reproducción
 
-</details>
+### 📧 Fase 2 — Gmail
 
-|    | Fase                                 | Descripción                                    |                                   Estado                                   |
-|:--:|:-------------------------------------|:-----------------------------------------------|:--------------------------------------------------------------------------:|
-| 🔊 | **Fase 1** · Fundamentos de Voz      | Integración TTS · Lectura de correo de ejemplo | ![](https://img.shields.io/badge/Completado-brightgreen?style=flat-square) |
-| 📧 | **Fase 2** · Integración Gmail       | OAuth · Metadatos · Lectura de correos reales  | ![](https://img.shields.io/badge/Completado-brightgreen?style=flat-square) |
-| ⚙️ | **Fase 3** · Backend & Usuario       | Spring Boot · Preferencias · Historial         |    ![](https://img.shields.io/badge/Pendiente-FFD700?style=flat-square)    |
-| 🤖 | **Fase 4** · Inteligencia Artificial | Resúmenes IA · Priorización · Categorización   |    ![](https://img.shields.io/badge/Pendiente-FFD700?style=flat-square)    |
-| 🚀 | **Fase 5** · Producción              | Respuestas de voz · Multi-proveedor · Deploy   |    ![](https://img.shields.io/badge/Pendiente-FFD700?style=flat-square)    |
+* [x] Google OAuth
+* [x] Integración Gmail API
+* [x] Recuperación de emails
+* [x] Visualización de mensajes
 
-## 🔮 Visión del Proyecto
+### ⚙️ Fase 3 — Backend
 
-MailFlow busca convertirse en un asistente inteligente de correo electrónico orientado a accesibilidad y productividad.
+* [ ] API con Spring Boot
+* [ ] Gestión de usuarios
+* [ ] Preferencias
+* [ ] Persistencia
+* [ ] Historial
 
-Características planificadas:
+### 🤖 Fase 4 — Inteligencia Artificial
 
-* 🔊 Lectura automática de correos
-* 🤖 Resúmenes generados con IA
-* ⭐ Priorización inteligente
-* 🎙️ Respuestas por voz
-* 📬 Soporte para múltiples proveedores de correo
-* ♿ Herramientas de accesibilidad
+* [ ] Resúmenes de emails
+* [ ] Priorización
+* [ ] Categorización
+* [ ] Procesamiento inteligente
 
-### 🗂️ Estructura del proyecto
+### 🚀 Fase 5 — Evolución
 
-<!-- reestructurar marta -->
+* [ ] Respuestas mediante voz
+* [ ] Soporte para múltiples proveedores
+* [ ] Deploy
+* [ ] Mejoras de accesibilidad
 
-````
+---
+
+## 🔐 Seguridad
+
+MailFlow trabaja con información potencialmente sensible, por lo que la autenticación y el acceso a los datos de correo
+forman parte importante del diseño.
+
+El proyecto utiliza OAuth 2.0 para la autenticación con Google y busca aplicar el principio de mínimo privilegio
+respecto de los permisos solicitados.
+
+ <!--📚 Más información en [`docs/security.md`](docs/).-->
+
+---
+
+## 📂 Estructura
+
+```text
 mailflow/
 │
 ├── frontend/
-│   │
 │   ├── lib/
-│   │   │
 │   │   ├── models/
-│   │   │   └── email.dart
-│   │   │
 │   │   ├── screens/
-│   │   │   ├── login_page.dart
-│   │   │   ├── home_page.dart
-│   │   │   └── inbox_page.dart
-│   │   │
 │   │   ├── services/
-│   │   │   ├── auth_service.dart
-│   │   │   ├── gmail_service.dart
-│   │   │   └── tts_service.dart
-│   │   │
 │   │   ├── widgets/
-│   │   │   ├── email_card.dart
-│   │   │   └── custom_button.dart
-│   │   │
 │   │   ├── constants/
-│   │   │   └── app_constants.dart
-│   │   │
-│   │   ├── theme/
-│   │   │   └── app_theme.dart
-│   │   │
-│   │   └── main.dart
+│   │   └── theme/
 │   │
 │   ├── android/
 │   ├── ios/
@@ -183,34 +260,46 @@ mailflow/
 │   └── macos/
 │
 ├── backend/
-│   │
-│   ├── src/
-│   ├── Dockerfile
-│   └── README.md
 │
 ├── docs/
-│   │
+│   ├── decisions/
 │   ├── architecture.md
 │   ├── roadmap.md
-│   ├── ideas.md
-│   │
-│   └── screenshots/
-│       ├── home.png
-│       ├── login.png
-│       └── inbox.png
+│   └── ...
 │
-├── .gitignore
 ├── README.md
 └── LICENSE
-
-````
+```
 
 ---
 
-## Autor 👩🏽‍💻
+## 🚧 Estado del proyecto
 
-Brisa Escobar - Estudiante de Ingeniería en Sistemas · Desarrolladora de Software
+**MailFlow se encuentra actualmente en desarrollo.**
 
-Proyecto personal orientado a accesibilidad, productividad y desarrollo multiplataforma.
-<!-- y corchi <3-->
+La aplicación está evolucionando desde un prototipo inicial hacia una arquitectura más completa, incorporando
+progresivamente autenticación, integración con Gmail, procesamiento de emails, Text-to-Speech, backend e inteligencia
+artificial.
 
+---
+
+## 👩🏽‍💻 Autora
+
+**Brisa Anahi Escobar**
+
+Estudiante de Ingeniería en Sistemas de Información · Desarrolladora de Software en formación.
+
+MailFlow es un proyecto personal creado para explorar la integración entre **desarrollo de aplicaciones, APIs,
+autenticación, voz e inteligencia artificial**, partiendo de un problema real.
+
+* 💼 [LinkedIn](https://www.linkedin.com/in/escobarbrisa/)
+* 🌐 [Portfolio](https://brisaanahiescobar.github.io/Portafolio/)
+* 💻 [GitHub](https://github.com/BrisaAnahiEscobar)
+
+---
+
+## 📌 ¿Querés conocer más?
+
+Podés explorar el código, la documentación y las decisiones técnicas del proyecto:
+
+👉 **[Ver MailFlow en GitHub](https://github.com/BrisaAnahiEscobar/mailflow)**
