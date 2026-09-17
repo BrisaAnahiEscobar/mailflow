@@ -283,6 +283,25 @@ artificial.
 
 ---
 
+## 🤝 Contribuciones
+
+MailFlow es un proyecto personal en desarrollo, pero las contribuciones son bienvenidas.
+
+Si querés aportar:
+
+1. Hacé un **fork** del repositorio.
+2. Creá una rama para tu cambio: `git checkout -b feature/mi-mejora`
+3. Hacé commit de tus cambios: `git commit -m "feat: agrego X"`
+4. Subí la rama: `git push origin feature/mi-mejora`
+5. Abrí un **Pull Request** describiendo qué cambiaste y por qué.
+
+Voy a revisar cada PR y decidir si se integra o no, siempre priorizando la coherencia con el roadmap y la arquitectura
+del proyecto.
+
+Si encontrás un bug o tenés una idea, podés abrir un **issue** antes de escribir código para charlarlo.
+
+Gracias por el interés 🙌
+
 ## 👩🏽‍💻 Autora
 
 **Brisa Anahi Escobar**
