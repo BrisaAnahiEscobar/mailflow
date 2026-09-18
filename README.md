@@ -35,44 +35,44 @@ A partir de esa idea comenzó MailFlow.
 
 ---
 
-## 🎯 Objetivo
+## Objetivo
 
 El objetivo de MailFlow es explorar una experiencia de correo electrónico más flexible, donde el usuario pueda:
 
-* 📧 consultar sus emails;
-* 🔊 escucharlos mediante Text-to-Speech;
-* 🤖 obtener resúmenes de mensajes extensos;
-* ⭐ identificar mensajes relevantes;
-* 🎙️ interactuar con el correo mediante voz.
+* consultar sus emails;
+* escucharlos mediante Text-to-Speech;
+* obtener resúmenes de mensajes extensos;
+* identificar mensajes relevantes;
+* interactuar con el correo mediante voz.
 
 La aplicación está pensada especialmente para situaciones donde mantener la atención sobre una pantalla no resulta
 práctico.
 
 ---
 
-## ✨ Funcionalidades
+## Funcionalidades
 
 ### Actualmente implementado
 
-* 🔐 Autenticación mediante Google OAuth 2.0
-* 📧 Integración con Gmail API
-* 📬 Recuperación de correos electrónicos
-* 📨 Visualización de mensajes
-* 🔊 Conversión de texto a voz
-* 🌐 Interfaz web desarrollada con Flutter
+* Autenticación mediante Google OAuth 2.0
+* Integración con Gmail API
+* Recuperación de correos electrónicos
+* Visualización de mensajes
+* Conversión de texto a voz
+* Interfaz web desarrollada con Flutter
 
 ### En desarrollo
 
-* 🤖 Resúmenes de emails mediante IA
-* ⭐ Priorización inteligente
-* 🏷️ Categorización automática
-* 🎙️ Interacción mediante comandos de voz
-* 💬 Respuestas mediante voz
-* 📮 Soporte para otros proveedores de correo
+* Resúmenes de emails mediante IA
+* Priorización inteligente
+* Categorización automática
+* Interacción mediante comandos de voz
+* Respuestas mediante voz
+* Soporte para otros proveedores de correo
 
 ---
 
-## 🖥️ Flujo actual
+## Flujo actual
 
 ```text
 ┌──────────────────┐
@@ -106,7 +106,7 @@ práctico.
 
 ---
 
-## 🏗️ Arquitectura
+## Arquitectura
 
 ### Arquitectura actual
 
@@ -171,7 +171,7 @@ centralizar la lógica de negocio.
 
 ---
 
-## 🧠 Decisiones técnicas
+## Decisiones técnicas
 
 MailFlow también funciona como un espacio de aprendizaje y experimentación sobre desarrollo de software.
 
@@ -187,7 +187,7 @@ Algunas decisiones se documentan mediante **Architecture Decision Records (ADR)*
 
 ---
 
-## 🗺️ Roadmap
+## Roadmap
 
 ### 🔊 Fase 1 — Voz
 
@@ -226,7 +226,7 @@ Algunas decisiones se documentan mediante **Architecture Decision Records (ADR)*
 
 ---
 
-## 🔐 Seguridad
+## Seguridad
 
 MailFlow trabaja con información potencialmente sensible, por lo que la autenticación y el acceso a los datos de correo
 forman parte importante del diseño.
@@ -234,11 +234,11 @@ forman parte importante del diseño.
 El proyecto utiliza OAuth 2.0 para la autenticación con Google y busca aplicar el principio de mínimo privilegio
 respecto de los permisos solicitados.
 
- <!--📚 Más información en [`docs/security.md`](docs/).-->
+ <!-- Más información en [`docs/security.md`](docs/).-->
 
 ---
 
-## 📂 Estructura
+## Estructura
 
 ```text
 mailflow/
@@ -273,7 +273,7 @@ mailflow/
 
 ---
 
-## 🚧 Estado del proyecto
+## Estado del proyecto
 
 **MailFlow se encuentra actualmente en desarrollo.**
 
@@ -283,7 +283,7 @@ artificial.
 
 ---
 
-## 🤝 Contribuciones
+## Contribuciones
 
 MailFlow es un proyecto personal en desarrollo, pero las contribuciones son bienvenidas.
 
@@ -317,7 +317,7 @@ autenticación, voz e inteligencia artificial**, partiendo de un problema real.
 
 ---
 
-## 📌 ¿Querés conocer más?
+## ¿Querés conocer más?
 
 Podés explorar el código, la documentación y las decisiones técnicas del proyecto:
 
