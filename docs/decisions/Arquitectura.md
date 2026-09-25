@@ -2,7 +2,7 @@
 
 > [MailFlow — Documento de Arquitectura](https://docs.google.com/document/d/1LCGyoSWmcGrbtWah-U_Bjyy1KmuRAVfX1r8WUIju6jQ/edit?tab=t.0)
 >
-> Este archivo es un resumen de referencia rápida. La fuente de completa y aces el documento de Google.
+>  Importante - Este archivo es un resumen de referencia rápida. La fuente completa es el documento de Google.
 
 ---
 
