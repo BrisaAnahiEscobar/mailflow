@@ -44,13 +44,13 @@ Convierte correos de Gmail en audio mediante TTS, orientada a accesibilidad y pr
 
 ## 3. Fases del proyecto
 
-| # | Fase                       | Contenido                                      | Estado       |
-|---|----------------------------|------------------------------------------------|--------------|
-| 1 | 🔊 Fundamentos de Voz      | Integración TTS · Lectura de correo de ejemplo | ✅ Completo   |
-| 2 | 📧 Integración Gmail       | OAuth · Metadatos · Lectura de correos reales  | ✅ Completo   |
-| 3 | ⚙️ Backend & Usuario       | Spring Boot · Preferencias · Historial         | 🟡 Pendiente |
-| 4 | 🤖 Inteligencia Artificial | Resúmenes IA · Priorización · Categorización   | 🟡 Pendiente |
-| 5 | 🚀 Producción              | Respuestas por voz · Multi-proveedor · Deploy  | 🟡 Pendiente |
+| # | Fase                       | Contenido                                      | Estado        |
+|---|----------------------------|------------------------------------------------|---------------|
+| 1 | 🔊 Fundamentos de Voz      | Integración TTS · Lectura de correo de ejemplo | ✅ Completo    |
+| 2 | 📧 Integración Gmail       | OAuth · Metadatos · Lectura de correos reales  | ✅ Completo    |
+| 3 | ⚙️ Backend & Usuario       | Spring Boot · Preferencias · Historial         | 🟠 En proceso |
+| 4 | 🤖 Inteligencia Artificial | Resúmenes IA · Priorización · Categorización   | 🟡 Pendiente  |
+| 5 | 🚀 Producción              | Respuestas por voz · Multi-proveedor · Deploy  | 🟡 Pendiente  |
 
 ---
 
