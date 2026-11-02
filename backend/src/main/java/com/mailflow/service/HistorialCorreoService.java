@@ -1,10 +1,12 @@
 package com.mailflow.service;
 
 import com.mailflow.dto.HistorialCorreoDTO;
+import com.mailflow.exception.RecursoNoEncontradoException;
 import com.mailflow.model.HistorialCorreo;
 import com.mailflow.model.Usuario;
 import com.mailflow.repository.HistorialCorreoRepository;
 import com.mailflow.repository.UsuarioRepository;
+import jakarta.transaction.Transactional;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -26,20 +28,24 @@ public class HistorialCorreoService {
 				.collect(Collectors.toList());
 	}
 
+	@Transactional
 	public HistorialCorreoDTO registrarEscucha(Long usuarioId, HistorialCorreoDTO dto) {
 		Usuario usuario = usuarioRepository.findById(usuarioId)
-				.orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+				.orElseThrow(() -> new RecursoNoEncontradoException("Usuario no encontrado"));
 
 		HistorialCorreo historial = new HistorialCorreo();
 		historial.setUsuario(usuario);
 		historial.setGmailMessageId(dto.getGmailMessageId());
-		historial.setAsunto(dto.getAsunto());
-		historial.setRemitente(dto.getRemitente());
+		historial.setAsunto(truncar(dto.getAsunto(), 255));
+		historial.setRemitente(truncar(dto.getRemitente(), 255));
 		historial.setEscuchado(true);
 		historial.setFechaEscucha(LocalDateTime.now());
 
-		historialCorreoRepository.save(historial);
-		return toDTO(historial);
+		return toDTO(historialCorreoRepository.save(historial));
+	}
+
+	private String truncar(String s, int max) {
+		return (s == null || s.length() <= max) ? s : s.substring(0, max);
 	}
 
 	private HistorialCorreoDTO toDTO(HistorialCorreo h) {
