@@ -1,4 +1,3 @@
-//import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthService {
@@ -8,13 +7,17 @@ class AuthService {
 
   final GoogleSignIn _googleSignIn = GoogleSignIn.instance;
 
-  //final FlutterSecureStorage _storage = const FlutterSecureStorage();
-
   bool _inicializado = false;
 
-  Future<void> inicializar({required String clientId}) async {
+  Future<void> inicializar({
+    required String clientId,
+    String? serverClientId,
+  }) async {
     if (_inicializado) return;
-    await _googleSignIn.initialize(clientId: clientId);
+    await _googleSignIn.initialize(
+      clientId: clientId,
+      serverClientId: serverClientId,
+    );
     _inicializado = true;
   }
 
@@ -50,18 +53,7 @@ class AuthService {
     return autorizacion.accessToken;
   }
 
-  /*Future<void> guardarToken(String token) async {
-    await _storage.write(key: 'gmail_access_token', value: token);
-  }
-
-  Future<String?> obtenerTokenGuardado() async {
-    return _storage.read(key: 'gmail_access_token');
-  }*/
-
   Future<void> signOut() async {
     await _googleSignIn.signOut();
-    //await _storage.delete(key: 'gmail_access_token');
   }
-
-  //bool get haySesionActiva => _googleSignIn.currentUser != null;
 }
