@@ -1,0 +1,32 @@
+@startuml ClasesDominio
+skinparam classAttributeIconSize 0
+
+class Usuario {
+  - id: Long
+  - googleId: String
+  - email: String
+  - nombre: String
+  - fechaCreacion: LocalDateTime
+}
+
+class PreferenciaUsuario {
+  - id: Long
+  - idioma: String
+  - velocidadLectura: Double
+  - tonoVoz: String
+}
+
+class HistorialCorreo {
+  - id: Long
+  - gmailMessageId: String
+  - fechaLectura: LocalDateTime
+  - resumenGenerado: Boolean
+}
+
+Usuario "1" --> "1" PreferenciaUsuario : tiene
+Usuario "1" --> "0..*" HistorialCorreo : registra
+
+
+
+@enduml
+

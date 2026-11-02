@@ -1,0 +1,32 @@
+@startuml CasosDeUso
+left to right direction
+
+actor "Usuario" as U
+
+rectangle MailFlow {
+  usecase "Iniciar sesión con Google" as UC1
+  usecase "Autorizar acceso a Gmail" as UC2
+  usecase "Ver bandeja de entrada" as UC3
+  usecase "Ver detalle de correo" as UC4
+  usecase "Escuchar correo (TTS)" as UC5
+  usecase "Configurar preferencias" as UC6
+  usecase "Ver historial de lectura" as UC7
+  usecase "Generar resumen con IA" as UC8
+}
+
+U --> UC1
+U --> UC2
+U --> UC3
+U --> UC4
+U --> UC5
+U --> UC6
+U --> UC7
+U --> UC8
+
+UC2 ..> UC1 : <<include>>
+UC4 ..> UC3 : <<include>>
+UC5 ..> UC4 : <<extend>>
+UC7 ..> UC5 : <<include>>
+
+
+@enduml

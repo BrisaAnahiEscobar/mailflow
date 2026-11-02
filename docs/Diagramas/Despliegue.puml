@@ -1,0 +1,30 @@
+@startuml Despliegue
+
+node "Navegador (Chrome)" as Browser {
+  artifact "MailFlow Web App\n(Flutter compilado)" as FlutterApp
+}
+
+node "Máquina de desarrollo (Windows / Git Bash)" as DevMachine {
+  node "JVM" {
+    artifact "mailflow-backend.jar\n(Spring Boot 3.4.3)" as Backend
+  }
+  node "Docker Engine" {
+    node "Contenedor postgres:16" as PgContainer {
+      database "PostgreSQL\n(puerto 5433)" as DB
+    }
+  }
+  artifact "pgAdmin" as PgAdmin
+}
+
+cloud "Google Cloud" {
+  [Gmail API]
+  [Google OAuth 2.0]
+}
+
+Browser --> Backend : HTTP/REST\n(localhost, CORS habilitado)
+Backend --> PgContainer : JDBC\n(localhost:5433)
+PgAdmin --> PgContainer : conexión de administración
+FlutterApp --> [Gmail API] : HTTPS
+FlutterApp --> [Google OAuth 2.0] : HTTPS
+
+@enduml
