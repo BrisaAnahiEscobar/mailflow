@@ -18,6 +18,8 @@ class LoginPage extends StatelessWidget {
       return;
     }
 
+    if (!context.mounted) return;
+
     final gmailProvider = context.read<GmailProvider>();
 
     gmailProvider.configurar(accessToken);
@@ -33,6 +35,8 @@ class LoginPage extends StatelessWidget {
         padding: const EdgeInsets.all(24),
         child: Consumer<AuthProvider>(
           builder: (context, auth, _) {
+            final ocupado = auth.cargando || auth.sincronizando;
+
             return Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -74,11 +78,10 @@ class LoginPage extends StatelessWidget {
                     icon: const Icon(Icons.login),
                     label: Text(
                       auth.estaAutenticado
-                          ? 'Sesión iniciada: '
-                                '${auth.usuario?.email ?? ""}'
+                          ? 'Sesión iniciada: ${auth.usuario?.email ?? ""}'
                           : 'Iniciar sesión con Google',
                     ),
-                    onPressed: (auth.cargando || auth.estaAutenticado)
+                    onPressed: (ocupado || auth.estaAutenticado)
                         ? null
                         : () => auth.iniciarSesion(),
                   ),
@@ -97,21 +100,34 @@ class LoginPage extends StatelessWidget {
                   ),
                   onPressed:
                       (!auth.estaAutenticado ||
-                          auth.cargando ||
+                          !auth.backendListo ||
+                          ocupado ||
                           auth.tieneAccesoGmail)
                       ? null
                       : () => _autorizarGmail(context, auth),
                 ),
 
-                if (auth.cargando)
+                if (ocupado)
                   const Padding(
                     padding: EdgeInsets.only(top: 24),
                     child: Center(child: CircularProgressIndicator()),
                   ),
 
-                if (auth.estaAutenticado && auth.tieneAccesoGmail)
+                if (auth.estaAutenticado &&
+                    !auth.backendListo &&
+                    !auth.sincronizando)
                   Padding(
-                    padding: const EdgeInsets.only(top: 24),
+                    padding: const EdgeInsets.only(top: 16),
+                    child: OutlinedButton.icon(
+                      icon: const Icon(Icons.refresh),
+                      label: const Text('Reintentar conexión con el servidor'),
+                      onPressed: auth.reintentarBackend,
+                    ),
+                  ),
+
+                if (auth.estaAutenticado && !auth.sincronizando)
+                  Padding(
+                    padding: const EdgeInsets.only(top: 16),
                     child: TextButton(
                       onPressed: () => auth.cerrarSesion(),
                       child: const Text('Cerrar sesión'),
