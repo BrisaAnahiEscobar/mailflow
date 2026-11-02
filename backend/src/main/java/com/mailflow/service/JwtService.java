@@ -23,14 +23,14 @@ public class JwtService {
 
 	public String generarToken(String email, Long usuarioId) {
 		return Jwts.builder()
-				.subject(email)
-				.claim("usuarioId", usuarioId)
+				.subject(String.valueOf(usuarioId))
+				.claim("email", email)
 				.issuedAt(new Date())
 				.expiration(new Date(System.currentTimeMillis() + expiration))
 				.signWith(getKey())
 				.compact();
 	}
-
+/*
 	public String extraerEmail(String token) {
 		return Jwts.parser()
 				.verifyWith(getKey())
@@ -39,6 +39,7 @@ public class JwtService {
 				.getPayload()
 				.getSubject();
 	}
+ */
 
 	public boolean validarToken(String token) {
 		try {
@@ -50,5 +51,15 @@ public class JwtService {
 		} catch (Exception e) {
 			return false;
 		}
+	}
+
+	public Long extraerUsuarioId(String token) {
+		String subject = Jwts.parser()
+				.verifyWith(getKey())
+				.build()
+				.parseSignedClaims(token)
+				.getPayload()
+				.getSubject();
+		return Long.valueOf(subject);
 	}
 }
