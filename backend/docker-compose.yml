@@ -11,6 +11,23 @@ services:
       - "5433:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U mailflow -d mailflow"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  backend:
+    build: .
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/mailflow?TimeZone=UTC
+      GOOGLE_CLIENT_IDS: ${GOOGLE_CLIENT_IDS}
+      JWT_SECRET: ${JWT_SECRET}
+    ports:
+      - "8080:8080"
 
 volumes:
   postgres_data:

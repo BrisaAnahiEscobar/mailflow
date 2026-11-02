@@ -1,46 +1,46 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 
+import '../models/preferencias.dart';
+
 class TtsService {
-  /* la instancia de flutter tts hace el trabajo
-  es privada (_) solo la usan metodos de este service*/
   final FlutterTts _tts = FlutterTts();
   bool _estaHablando = false;
+  Preferencias _preferencias = Preferencias.porDefecto;
+
+  VoidCallback? onCompletado;
+  VoidCallback? onError;
 
   bool get estaHablando => _estaHablando;
 
-  /* --------------------------------------------
-                  INICIALIZACION
-  -------------------------------------------- */
   Future<void> inicializar() async {
-    // config idioma velocidad tono de voz y volumen
-    await _tts.setLanguage("es-ES");
-    await _tts.setSpeechRate(0.45);
-    await _tts.setPitch(1.0);
+    await aplicarPreferencias(_preferencias);
     await _tts.setVolume(1.0);
 
-    // callbacks
-    _tts.setStartHandler(() {
-      _estaHablando = true;
-    });
-
-    _tts.setCancelHandler(() {
+    _tts.setStartHandler(() => _estaHablando = true);
+    _tts.setCancelHandler(() => _estaHablando = false);
+    _tts.setCompletionHandler(() {
       _estaHablando = false;
+      onCompletado?.call();
     });
-
     _tts.setErrorHandler((mensaje) {
       _estaHablando = false;
-      debugPrint('TtsService error: $mensaje'); // fase 3
+      debugPrint('TtsService error: $mensaje');
+      onError?.call();
     });
   }
 
-  /* --------------------------------------------
-                    METODOS PUBLICOS
-    -------------------------------------------- */
-  Future<void> hablar(String texto, {String idioma = 'es-ES'}) async {
+  Future<void> aplicarPreferencias(Preferencias p) async {
+    _preferencias = p;
+    await _tts.setSpeechRate(p.velocidadTts);
+    await _tts.setPitch(p.pitchTts);
+    await _tts.setLanguage(p.idiomaTts);
+  }
+
+  Future<void> hablar(String texto, {String idioma = ''}) async {
     if (texto.trim().isEmpty) return;
     if (_estaHablando) await parar();
-    await _tts.setLanguage(idioma);
+    await _tts.setLanguage(idioma.isEmpty ? _preferencias.idiomaTts : idioma);
     await _tts.speak(texto);
   }
 
@@ -49,10 +49,5 @@ class TtsService {
     _estaHablando = false;
   }
 
-  /* --------------------------------------------
-                    LIMPIEZA
-  -------------------------------------------- */
-  Future<void> dispose() async {
-    await parar();
-  }
+  Future<void> dispose() async => parar();
 }

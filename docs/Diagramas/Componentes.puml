@@ -1,0 +1,54 @@
+@startuml Componentes
+skinparam componentStyle rectangle
+
+package "Frontend (Flutter Web)" {
+  [LoginPage]
+  [InboxPage]
+  [EmailDetailPage]
+  [AuthService]
+  [GmailService]
+  [TtsService]
+}
+
+package "Backend (Spring Boot)" {
+  [UsuarioController]
+  [PreferenciaController]
+  [HistorialController]
+  [UsuarioService]
+  [PreferenciaService]
+  [HistorialService]
+  [UsuarioRepository]
+  [PreferenciaUsuarioRepository]
+  [HistorialCorreoRepository]
+}
+
+database "PostgreSQL" as DB
+
+cloud "Google Cloud" {
+  [Gmail API]
+  [Google OAuth 2.0 / GSI]
+}
+
+[LoginPage] --> [AuthService]
+[AuthService] --> [Google OAuth 2.0 / GSI]
+[InboxPage] --> [GmailService]
+[GmailService] --> [Gmail API]
+[EmailDetailPage] --> [TtsService]
+
+[AuthService] ..> [UsuarioController] : sincroniza usuario
+[EmailDetailPage] ..> [HistorialController] : registra lectura
+[LoginPage] ..> [PreferenciaController] : carga preferencias
+
+[UsuarioController] --> [UsuarioService]
+[PreferenciaController] --> [PreferenciaService]
+[HistorialController] --> [HistorialService]
+
+[UsuarioService] --> [UsuarioRepository]
+[PreferenciaService] --> [PreferenciaUsuarioRepository]
+[HistorialService] --> [HistorialCorreoRepository]
+
+[UsuarioRepository] --> DB
+[PreferenciaUsuarioRepository] --> DB
+[HistorialCorreoRepository] --> DB
+
+@enduml

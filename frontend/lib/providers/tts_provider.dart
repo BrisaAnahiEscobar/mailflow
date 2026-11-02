@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 
 import '../models/email.dart';
+import '../models/preferencias.dart';
 import '../services/tts_service.dart';
 
 class TtsProvider extends ChangeNotifier {
@@ -13,6 +14,8 @@ class TtsProvider extends ChangeNotifier {
   bool _inicializado = false;
   Email? _correoActual;
   String? _mensajeError;
+
+  Future<void> Function(Email correo)? onCorreoEscuchado;
 
   // -------------- getters --------------
   bool get estaHablando => _estaHablando;
@@ -29,6 +32,8 @@ class TtsProvider extends ChangeNotifier {
   Future<void> inicializar() async {
     if (_inicializado) return;
     try {
+      _servicio.onCompletado = _alTerminarLectura;
+      _servicio.onError = _alFallarLectura;
       await _servicio.inicializar();
       _inicializado = true;
       _mensajeError = null;
@@ -42,6 +47,11 @@ class TtsProvider extends ChangeNotifier {
   /* --------------------------------------------
                     METODOS PUBLICOS
   -------------------------------------------- */
+  Future<void> aplicarPreferencias(Preferencias p) async {
+    if (!_inicializado) return;
+    await _servicio.aplicarPreferencias(p);
+  }
+
   Future<void> leerCorreo(Email correo) async {
     if (!_inicializado) return;
     try {
@@ -50,7 +60,6 @@ class TtsProvider extends ChangeNotifier {
       _mensajeError = null;
       notifyListeners();
       await _servicio.hablar(correo.textoParaLeer(), idioma: correo.idioma);
-      _estaHablando = false;
     } catch (e) {
       _estaHablando = false;
       _mensajeError = 'Error al leer el correo';
@@ -69,6 +78,31 @@ class TtsProvider extends ChangeNotifier {
       debugPrint('TtsProvider error al parar: $e');
     }
     notifyListeners();
+  }
+
+  /* --------------------------------------------
+                  CALLBACKS DEL SERVICIO
+  -------------------------------------------- */
+  void _alTerminarLectura() {
+    final correo = _correoActual;
+    if (!_estaHablando || correo == null) return;
+    _estaHablando = false;
+    notifyListeners();
+    _registrarEscucha(correo);
+  }
+
+  void _alFallarLectura() {
+    _estaHablando = false;
+    _mensajeError = 'Error al leer el correo';
+    notifyListeners();
+  }
+
+  Future<void> _registrarEscucha(Email correo) async {
+    try {
+      await onCorreoEscuchado?.call(correo);
+    } catch (e) {
+      debugPrint('No se pudo registrar el historial: $e');
+    }
   }
 
   /* --------------------------------------------

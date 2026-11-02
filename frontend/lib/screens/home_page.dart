@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 
 import '../models/email.dart';
 import '../providers/gmail_provider.dart';
+import 'ajustes_page.dart';
 import 'email_detail_page.dart';
 import 'inbox_page.dart';
 
@@ -45,11 +46,12 @@ class _HomePageState extends State<HomePage> {
         title: const Text('MailFlow'),
         actions: [
           IconButton(
-            tooltip: 'Actualizar',
-            onPressed: () {
-              context.read<GmailProvider>().cargarBandeja();
-            },
-            icon: const Icon(Icons.refresh),
+            icon: const Icon(Icons.settings),
+            tooltip: 'Preferencias de voz',
+            onPressed: () => Navigator.push(
+              context,
+              MaterialPageRoute(builder: (_) => const AjustesPage()),
+            ),
           ),
         ],
       ),

@@ -1,0 +1,34 @@
+@startuml DER
+skinparam linetype ortho
+
+entity "usuario" as usuario {
+  * id : BIGINT <<PK>>
+  --
+  * google_id : VARCHAR
+  * email : VARCHAR
+  nombre : VARCHAR
+  fecha_creacion : TIMESTAMP
+}
+
+entity "preferencia_usuario" as preferencia {
+  * id : BIGINT <<PK>>
+  --
+  * usuario_id : BIGINT <<FK>>
+  idioma : VARCHAR
+  velocidad_lectura : DOUBLE
+  tono_voz : VARCHAR
+}
+
+entity "historial_correo" as historial {
+  * id : BIGINT <<PK>>
+  --
+  * usuario_id : BIGINT <<FK>>
+  gmail_message_id : VARCHAR
+  fecha_lectura : TIMESTAMP
+  resumen_generado : BOOLEAN
+}
+
+usuario ||--|| preferencia : "tiene"
+usuario ||--o{ historial : "registra"
+
+@enduml
