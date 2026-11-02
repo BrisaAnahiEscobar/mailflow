@@ -12,7 +12,7 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U mailflow -d mailflow"]
+      test: [ "CMD-SHELL", "pg_isready -U mailflow -d mailflow" ]
       interval: 5s
       timeout: 3s
       retries: 10
@@ -28,6 +28,14 @@ services:
       JWT_SECRET: ${JWT_SECRET}
     ports:
       - "8080:8080"
+  
+  frontend:
+    build: ../frontend
+    profiles: [ "web" ]
+    depends_on:
+      - backend
+    ports:
+      - "5000:80"
 
 volumes:
   postgres_data:
