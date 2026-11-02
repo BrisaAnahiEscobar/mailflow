@@ -1,7 +1,9 @@
 package com.mailflow.controller;
 
-import com.mailflow.dto.AuthRequestDTO;
+import com.mailflow.dto.AuthResponseDTO;
+import com.mailflow.dto.GoogleAuthRequestDTO;
 import com.mailflow.service.UsuarioService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,15 +16,9 @@ public class AuthController {
 	private final UsuarioService usuarioService;
 
 	@PostMapping("/google")
-	public ResponseEntity<AuthRequestDTO> autenticarConGoogle(
-			@RequestBody AuthRequestDTO request) {
-
-		// Por ahora recibe googleSub y email directamente migra en Fase 4
-		AuthRequestDTO response = usuarioService.registrarOLoguear(
-				request.getToken(),
-				request.getToken() + "@mailflow.dev"
-		);
-
-		return ResponseEntity.ok(response);
+	public ResponseEntity<AuthResponseDTO> autenticarConGoogle(
+			@Valid @RequestBody GoogleAuthRequestDTO request) {
+		return ResponseEntity.ok(usuarioService.autenticarConGoogle(request.getIdToken()));
 	}
 }
+
