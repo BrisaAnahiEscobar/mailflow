@@ -115,6 +115,11 @@ class AuthProvider extends ChangeNotifier {
   void _manejarErrorAutenticacion(Object error) {
     debugPrint('AuthProvider error en authenticationEvents: $error');
 
+    if (error is GoogleSignInException &&
+        error.code == GoogleSignInExceptionCode.canceled) {
+      return;
+    }
+
     _mensajeError = 'Error al iniciar sesión con Google';
 
     notifyListeners();
@@ -189,7 +194,6 @@ class AuthProvider extends ChangeNotifier {
                   SINCRONIZACION BACKEND
   -------------------------------------------- */
 
-  /// Canjea el ID token de Google por el JWT propio del backend.
   Future<void> _sincronizarConBackend(GoogleSignInAccount cuenta) async {
     if (_sincronizando || _sesionBackend != null) return;
 
